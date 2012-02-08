@@ -1,10 +1,14 @@
 require 'java'
+
+# require the generated and compiled JAXB code to interact with the books.xsd format
 require 'books.jar'
+
+# provides a JAXB marshall mixin method for rendering the books collection to Xml
 require 'jaxb/jaxb.rb'
 
 module Books
   class Books
-    include Jaxb    # mixin the ability to marshall to Xml
+    include Jaxb
 
     attr_reader :books
     attr_reader :book_list  #  => Java::JavaUtil::ArrayList
@@ -17,7 +21,7 @@ module Books
       @book_list = books.get_book
     end
 
-    def add_book(book)
+    def add(book)
       @book_list.add(book.book_type)
     end
 
