@@ -18,7 +18,7 @@ module Books
         name.should == author_names[0]
       end
 
-      it "should add multiple author's" do
+      it "should add multiple authors" do
         author_names.each do |name|
           authors.add(name)
         end
