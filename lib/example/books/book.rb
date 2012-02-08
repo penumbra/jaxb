@@ -20,7 +20,7 @@ module Books
     rescue Exception => ex
       # You *must* call super if you don't handle the
       # method, otherwise you'll mess up Ruby's method lookup.
-      puts ="Exception calling #{meth} => #{ex}"
+      puts "Exception calling #{meth} => #{ex}"
       super
     end
 
