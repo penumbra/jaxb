@@ -1,8 +1,3 @@
-require 'java'
-
-# require the generated and compiled JAXB code to interact with the books.xsd format
-require 'books.jar'
-
 module Books
   class Authors
     attr_reader :authors_type

@@ -1,8 +1,3 @@
-require 'java'
-
-# require the generated and compiled JAXB code to interact with the books.xsd format
-require 'books.jar'
-
 # provides a JAXB marshall mixin method for rendering the books collection to Xml
 require 'jaxb/jaxb.rb'
 
