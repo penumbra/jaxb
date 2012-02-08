@@ -5,6 +5,7 @@ This demonstrates how JRuby may be used to control JAXB classes.  It was inspire
 
 ## Process
 The JAXB compiler xjc was used to generate Java source files from ''books.xsd'':
+
  + Books.java - represents a collection of BookType instances
  + BookType.java - represents a book (isbn, name, authors, etc)
  + BookCategoryType.java - an enumerated list to represent a book's category
