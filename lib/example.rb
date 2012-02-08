@@ -1,16 +1,16 @@
 require 'example/books.rb'
 
 class Example
-  attr_reader :books   # manages the collection of books
+  attr_reader :books   # represents a collection of books
 
   def initialize
     @books = Books::Books.new
   end
 
-  def add(data)
+  def add(book_data)
     book = Books::Book.new
 
-    data.each do |key, value|
+    book_data.each do |key, value|
       if key == :authors
         value.each {|author| book.authors.add(author) }
       else
