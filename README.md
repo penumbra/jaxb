@@ -16,7 +16,7 @@ An ant build.xml supports the Java code generation and compilation.
 ## Schema
 The following ''book.xsd'' schema used as the basis for this example.  The schema resides in the schema folder:
 
-```
+```xml
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0">
@@ -82,7 +82,7 @@ The following ''book.xsd'' schema used as the basis for this example.  The schem
 ## JRuby
 Using Ruby metaprogramming techniques, it becomes possible to interact with the JAXB classes (see list above) using native Ruby objects, while maintaining the ability to readily marshal the JAXB objects into XML.
 
-```
+```ruby
 metaprogramming_ruby = { 
   :item_id => '308', 
   :name => 'Metaprogramming Ruby', 
