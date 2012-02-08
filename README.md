@@ -95,6 +95,6 @@ metaprogramming_ruby = {
     'astonishing possible.'}
 
 ex = Example.new
-ex.add_book(metaprogramming_ruby)
+ex.add( metaprogramming_ruby )
 ex.write_xml('book.xml')
 ```
