@@ -18,6 +18,10 @@
     <classpath refid="classpath" />
   </taskdef>
 
+  <target name="build-jar" depends="compile" description="Builds a jar from compiled jaxb code">
+    <jar jarfile="jars/books.jar" basedir="classes"/>
+  </target>
+
   <!--compile Java source files-->
   <target name="compile" description="Compile all Java source files">
     <echo message="Compiling the schema..." />
@@ -25,6 +29,7 @@
     <xjc schema="schemas/books.xsd" package="example.books" destdir="gen-src">
       <produces dir="gen-src/example.books" includes="**/*.java" />
     </xjc>
+    
     <echo message="Compiling the java source files..." />
     <mkdir dir="classes" />
     <javac destdir="classes" debug="on">
