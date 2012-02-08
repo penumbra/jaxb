@@ -97,6 +97,7 @@ metaprogramming_ruby = {
 ex = Example.new
 ex.add( metaprogramming_ruby )
 ex.write_xml('book.xml')
+```
 
 # XML Output
 
