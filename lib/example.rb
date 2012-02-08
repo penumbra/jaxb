@@ -21,7 +21,7 @@ class Example
       end
     end
 
-    @books.add_book(book)  # add book to books collection
+    @books.add(book)  # add book to books collection
   end
 
   def write_xml()
