@@ -80,4 +80,21 @@ The following ''book.xsd'' schema used as the basis for this example.  The schem
 ```
 
 ## JRuby
+Using Ruby metaprogramming techniques, it becomes possible to interact with the JAXB classes (see list above) using native Ruby objects, while maintaining the ability to readily marshal the JAXB objects into XML.
 
+```
+metaprogramming_ruby = { 
+  :item_id => '308', 
+  :name => 'Metaprogramming Ruby', 
+  :isbn => 1934356476, 
+  :price => '$39.95',
+  :authors => ['Paulo Perrotta'],
+  :description => 'Ruby inherits characteristics from various languages — Lisp, Smalltalk ' +
+    ', C, and Perl, to name a few.  Metaprogramming comes from Lisp ' +
+    '(and Smalltalk).  It’s a bit like magic, which makes something ' +
+    'astonishing possible.'}
+
+ex = Example.new
+ex.add_book(metaprogramming_ruby)
+ex.write_xml('book.xml')
+```
