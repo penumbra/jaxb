@@ -5,10 +5,10 @@ This demonstrates how JRuby may be used to control JAXB classes.  It was inspire
 
 ## Process
 The JAXB compiler xjc was used to generate Java source files from ''books.xsd'':
-* Books.java
-* BookType.java
-* BookCategoryType.java
-* ObjectFactory.java
+    * Books.java
+    * BookType.java
+    * BookCategoryType.java
+    * ObjectFactory.java
 
 An ant build.xml supports the Java code generation and compilation.
 
@@ -16,6 +16,7 @@ An ant build.xml supports the Java code generation and compilation.
 The following ''book.xsd'' schema used as the basis for this example.  The schema resides in the schema folder:
 
 <pre>
+
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0">
@@ -74,6 +75,7 @@ The following ''book.xsd'' schema used as the basis for this example.  The schem
    </xs:restriction>
 </xs:simpleType>
 </xs:schema>
+
 </pre>
 
 ## JRuby
