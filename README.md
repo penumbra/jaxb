@@ -9,7 +9,7 @@ The JAXB compiler xjc was used to generate Java source files from ''books.xsd'':
  + Books.java - represents a collection of BookType instances
  + BookType.java - represents a book (isbn, name, authors, etc)
  + BookCategoryType.java - an enumerated list to represent a book's category
- + ObjectFactory.java - used to genereate instances of all of the above clases
+ + ObjectFactory.java - used at runtime to genereate instances of all of the above clases
 
 An ant build.xml supports the Java code generation and compilation.
 
