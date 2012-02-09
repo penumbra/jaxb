@@ -32,7 +32,7 @@ An ant build.xml supports the Java code generation and compilation.
 * JRuby 1.6.5 (http://jruby.org)
 
 ### Clone Repo
-* clone repo 
+* git clone git@github.com:penumbra/jaxb.git 
 
 ### Update JAXB path in ant build and JRuby startup script
 * update ./build.xml to point to your jaxb.home
