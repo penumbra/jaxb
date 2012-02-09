@@ -15,6 +15,8 @@ module Jaxb
   def marshall(object, class_path)
     ctx = JAXBContext.new_instance(class_path)
 
+    # The Marshaller class is responsible for governing the process 
+    # of serializing Java content trees back into XML data. 
     marshaller = ctx.create_marshaller
     marshaller.set_property(Marshaller.JAXB_FORMATTED_OUTPUT, true)
 
