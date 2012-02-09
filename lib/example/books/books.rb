@@ -9,10 +9,10 @@ module Books
     attr_reader :book_list  #  => Java::JavaUtil::ArrayList
 
     def initialize
-      # books.xsd binding to example.books.*
       of = Java::example::books::ObjectFactory.new
 
       @books = of.create_books
+
       @book_list = books.get_book
     end
 

@@ -4,9 +4,8 @@ module Books
     attr_reader :authors    # a Ruby object that contains a BookType.Authors object
 
     def initialize
-      @of = Java::example::books::ObjectFactory.new
-
-      @book_type = @of.create_book_type
+      of = Java::example::books::ObjectFactory.new
+      @book_type = of.create_book_type
 
       set_authors_type
     end

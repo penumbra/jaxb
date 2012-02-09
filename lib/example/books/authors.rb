@@ -3,8 +3,8 @@ module Books
     attr_reader :authors_type
 
     def initialize
-      @of = Java::example::books::ObjectFactory.new
-      @authors_type = @of.create_book_type_authors
+      of = Java::example::books::ObjectFactory.new
+      @authors_type = of.create_book_type_authors
     end
 
     def add(author_name)
