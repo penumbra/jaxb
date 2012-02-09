@@ -27,23 +27,23 @@ module Books
       end
     end 
  
-    def method_missing(meth, *args, &block)
-      if meth == :authors=
+    def method_missing(method, *args, &block)
+      if method == :authors=
         @authors.update(args[0])
         # link the BookType.Authors object to this Ruby objects' BookType object
         @book_type.set_authors(@authors.authors_type)
-      elsif meth == :promotion=
+      elsif method == :promotion=
         @promotion.update( args[0] )
         # link the BookType.Promotion object to this Ruby objects' BookType object
         @book_type.set_promotion(@promotion.promotion_type)
       else
         # pass the call to book_type
-        @book_type.send(meth, args[0])
+        @book_type.send(method, args[0])
       end
     rescue Exception => ex
       # You *must* call super if you don't handle the
       # method, otherwise you'll mess up Ruby's method lookup.
-      puts "Exception calling #{meth} => #{ex}"
+      puts "Exception calling #{method} => #{ex}"
       super
     end
   end
