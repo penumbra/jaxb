@@ -11,12 +11,7 @@ class Example
   def add(book_data)
     book = Books::Book.new
 
-    # convert key (e.g :name, :isbn, etc) to key= (e.g. :name=, :isbn=, etc)
-    # invoke the book's setter using the value
-    book_data.each do |key, value|
-      method = key.to_s + "=" 
-      book.send(method.to_sym, value)
-    end
+    book.update( book_data )
 
     @books.add(book)  # add book to books collection
   end
