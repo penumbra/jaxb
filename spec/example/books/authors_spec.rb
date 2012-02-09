@@ -28,5 +28,12 @@ module Books
         end
       end
     end
+
+    describe "#update" do
+      it "should support adding authors from an array" do
+        authors.update( author_names )
+        authors.authors_list.length.should == author_names.size
+      end
+    end
   end
 end
