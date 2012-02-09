@@ -25,7 +25,10 @@ class Example
   end
 
   def write_xml()
-    @books.save 'books.xml'  # marshall the books into Xml
+    # marshall the books into Xml
+    xml = @books.to_xml 
+    f = File.open('books.xml', 'w+')
+    f.write(xml)
   end
 end
 
