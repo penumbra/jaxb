@@ -50,10 +50,9 @@ module Books
         book_array.each {|book| books.add(book)}
 
         # marshall the books into Xml
-        books.save 'books.xml'
+        xml = books.to_xml
 
         # inspect the xml output
-        xml = File.read('books.xml') {|io| io.read }
         xml.include?('<books>').should == true
         xml.include?('<book itemId="123">').should == true
         xml.include?('<book itemId="456">').should == true
