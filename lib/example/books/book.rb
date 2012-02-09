@@ -29,7 +29,7 @@ module Books
  
     def method_missing(method, *args, &block)
       if method == :authors=
-        @authors.update(args[0])
+        @authors.update( args[0] )
         # link the BookType.Authors object to this Ruby objects' BookType object
         @book_type.set_authors(@authors.authors_type)
       elsif method == :promotion=
