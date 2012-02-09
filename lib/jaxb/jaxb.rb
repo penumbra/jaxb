@@ -12,15 +12,18 @@ java_import 'javax.xml.bind.JAXBException'
 java_import 'javax.xml.bind.Marshaller'
 
 module Jaxb
-  def marshall(object, class_path, file_name)
+  def marshall(object, class_path)
     ctx = JAXBContext.new_instance(class_path)
 
     marshaller = ctx.create_marshaller
     marshaller.set_property(Marshaller.JAXB_FORMATTED_OUTPUT, true)
 
-    # output Java objects to file_name as XML
-    java_file = Java::JavaIo::File.new(file_name)
-    marshaller.marshal(object, java_file)
+    # capture marshalled XML data to a StringBuffer
+    sw = Java::JavaIo::StringWriter.new
+
+    # output Java objects to XML
+    marshaller.marshal(object, sw)
+    sw.to_string
   rescue JAXBException => ex
     puts "Exception marshalling #{class_path} to file: #{ex}"
   end
