@@ -8,6 +8,7 @@ module Books
     end
 
     def add(author_name)
+      # getAuthorName returns List<String>
       @authors_type.get_author_name.add(author_name)
     end
   end
