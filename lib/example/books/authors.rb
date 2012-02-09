@@ -11,12 +11,12 @@ module Books
       @authors_list = @authors_type.get_author_name
     end
 
-    def update( author_data)
-      author_data.each {|author| add(author) }
+    def update( author_data )
+      author_data.each {|author| add( author ) }
     end
 
-    def add(author_name)
-      @authors_list.add(author_name)
+    def add( author_name )
+      @authors_list.add( author_name )
     end
   end
 end
