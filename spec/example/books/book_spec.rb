@@ -26,32 +26,25 @@ module Books
       authors = ['Sam Ruby', 'Dave Thomas', 'David Heinemeier Hansson'] 
     end
 
-    describe "#authors" do
+    describe "#method_missing" do
       it "should support one author" do
          book.item_id = item_id
          book.name = title
-         book.isbn = isbn
-         book.price = price
-
-         book.authors.add(authors[0])
-         book.authors.authors_type.author_name.get(0).should == authors[0]
+         book.authors = authors[0]
+         # verify
+         book.authors.authors_list.get(0).should == authors[0]
       end
 
       it "should support multiple authors" do
          book.item_id = item_id
          book.name = title
-         book.isbn = isbn
-         book.price = price
-
-         authors.each {|author| book.authors.add(author) }
-
+         book.authors = authors
+         # verify
          book.authors.authors_type.author_name.each do |author|
-	   authors.include?(author).should == true
+           authors.include?(author).should == true
          end
       end
-    end
 
-    describe "#method_missing" do
       it "should allow discounts" do
         book.item_id = item_id
         book.name = title
