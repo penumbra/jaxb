@@ -29,8 +29,7 @@ class Example
     xml = @books.to_xml 
 
     # write to file
-    f = File.open(file_name, 'w+')
-    f.write(xml)
+    File.open(file_name, 'w+') {|f| f.write(xml)}
   end
 end
 
