@@ -1,7 +1,7 @@
 module Books
   class Book
     attr_reader :book_type  # book_type is the example.books.BookType object
-    attr_reader :authors    # a Ruby object that contains a BookType.Authors object
+    attr_reader :authors    # authors.authors_type is a BookType.Authors object
 
     def initialize
       of = Java::example::books::ObjectFactory.new
