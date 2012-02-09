@@ -24,10 +24,12 @@ class Example
     @books.add(book)  # add book to books collection
   end
 
-  def write_xml()
+  def write_xml( file_name )
     # marshall the books into Xml
     xml = @books.to_xml 
-    f = File.open('books.xml', 'w+')
+
+    # write to file
+    f = File.open(file_name, 'w+')
     f.write(xml)
   end
 end
@@ -69,4 +71,4 @@ ex.add( agile_rails )
 ex.add( metaprogramming_ruby )            
 ex.add( programming_semantic_web )
 
-ex.write_xml
+ex.write_xml 'books.xml'
