@@ -25,6 +25,6 @@ module Jaxb
     marshaller.marshal(object, sw)
     sw.to_string
   rescue JAXBException => ex
-    return "Exception marshalling #{class_path} to file: #{ex}"
+    return "Exception marshalling #{class_path} to xml: #{ex}"
   end
 end
