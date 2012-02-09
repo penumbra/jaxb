@@ -35,5 +35,6 @@ ex = Example.new
 ex.add( ExampleData::book1 )
 ex.add( ExampleData::book2 )
 ex.add( ExampleData::book3 )
+ex.add( ExampleData::book4 )
 
 ex.write_xml 'books.xml'
