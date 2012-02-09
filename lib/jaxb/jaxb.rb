@@ -1,10 +1,12 @@
 require 'java'
 
+# JAXB 2.2.4 update 1 classes (see http://jaxb.java.net) 
 require 'jaxb-api.jar'
 require 'jaxb-impl.jar'
 require 'activation.jar'
 require 'jsr173_1.0_api.jar'
 
+# java_import is the newest way to import a class
 java_import 'javax.xml.bind.JAXBContext'
 java_import 'javax.xml.bind.JAXBException'
 java_import 'javax.xml.bind.Marshaller'
