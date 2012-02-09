@@ -11,8 +11,15 @@ module Books
     end
 
     def method_missing(meth, *args, &block)
-      # pass the call to book_type
-      @book_type.send(meth, args[0])
+      if meth == :authors=
+        # author names are stored in @authors attr_reader
+        args[0].each do |author| 
+          @authors.add(author)
+        end
+      else
+        # pass the call to book_type
+        @book_type.send(meth, args[0])
+      end
     rescue Exception => ex
       # You *must* call super if you don't handle the
       # method, otherwise you'll mess up Ruby's method lookup.

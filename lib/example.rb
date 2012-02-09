@@ -12,14 +12,10 @@ class Example
     book = Books::Book.new
 
     book_data.each do |key, value|
-      if key == :authors
-        value.each {|author| book.authors.add(author) }
-      else
-        # convert key (e.g :name, :isbn, etc) to key= (e.g. :name=, :isbn=, etc)
-        method = key.to_s + "=" 
-        # invoke the book's setter using the value
-        book.send(method.to_sym, value)
-      end
+      # convert key (e.g :name, :isbn, etc) to key= (e.g. :name=, :isbn=, etc)
+      method = key.to_s + "=" 
+      # invoke the book's setter using the value
+      book.send(method.to_sym, value)
     end
 
     @books.add(book)  # add book to books collection
