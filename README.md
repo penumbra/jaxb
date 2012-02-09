@@ -15,6 +15,8 @@ JAXB uses Java's annotations for augmenting the generated classes with additiona
 
 *  see [JAXB by Ed Ort and Bhakti Mehta, March 2003](http://www.oracle.com/technetwork/articles/javase/index-140168.html) at oracle.com
 
+* Note: this JRuby JAXB example is based on the Ort, Menta JAXB example
+
 ## Process Overview
 The JAXB compiler xjc was used to generate Java source files from ''books.xsd'':
 
