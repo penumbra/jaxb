@@ -14,6 +14,7 @@ class ExampleData
     'worldwide phenomenon, and more important, it has become the ' +
     'framework of choice for the implementation of a wide range of ' +
     'so-called Web 2.0 applications.'
+    ar.promotion = { :discount => "25%" }
 
     ar.marshal_dump
   end
@@ -29,7 +30,7 @@ class ExampleData
     ', C, and Perl, to name a few.  Metaprogramming comes from Lisp ' +
     '(and Smalltalk).  It’s a bit like magic, which makes something ' +
     'astonishing possible.'
-
+    mr.promotion = { :none => "None" }
     mr.marshal_dump
   end
 
@@ -40,7 +41,7 @@ class ExampleData
     psw.isbn = 596153813
     psw.price = '$19.95'
     psw.authors = ['Toby Segaram', 'Colin Evans', 'Jamie Taylor']
-
+    psw.promotion = { :discount => "$5 Rebate" }
     psw.marshal_dump
   end
 end
