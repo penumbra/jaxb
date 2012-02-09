@@ -29,7 +29,7 @@ An ant build.xml supports the Java code generation and compilation.
 * JAXB 2.2.4 (http://jaxb.java.net)
 * Apache Ant 1.8.2 (http://ant.apache.org/)
 * JDK 1.6 (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* JRuby 1.6.5 (http:://jruby.org)
+* JRuby 1.6.5 (http://jruby.org)
 
 ### Clone Repo
 * clone repo 
