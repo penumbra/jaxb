@@ -35,8 +35,8 @@ An ant build.xml supports the Java code generation and compilation.
 * git clone git@github.com:penumbra/jaxb.git 
 
 ### Update JAXB path in ant build and JRuby startup script
-* update ./build.xml to point to your jaxb.home
-* update paths in bin/example.rb
+* update line 9 of ./build.xml to reference your JAXB installation path
+* update line 7 of bin/example.rb to reference your JAXB installation path
 
 ### Compile Java Classes
 * ant compile
