@@ -51,6 +51,18 @@ module Books
       end
     end
 
+    describe "#promotion" do
+      it "should allow discounts" do
+        book.item_id = item_id
+        book.name = title
+        book.isbn = isbn
+        book.price = price
+ 
+        book.promotion= {:discount => "25%"}
+        book.promotion.promotion_type.discount.should == "25%"
+      end
+    end
+
     describe "#method_missing" do
       it "sets the item_id property" do
         book.item_id = item_id
