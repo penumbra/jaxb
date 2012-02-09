@@ -19,8 +19,8 @@ module Books
       @book_list.add(book.book_type)
     end
 
-    def save(file_name)
-      marshall(@books, 'example.books', file_name)
+    def to_xml
+      marshall(@books, 'example.books')
     end
   end
 end
