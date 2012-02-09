@@ -10,7 +10,6 @@ module Books
 
     def initialize
       of = Java::example::books::ObjectFactory.new
-
       @books = of.create_books
 
       @book_list = books.get_book
