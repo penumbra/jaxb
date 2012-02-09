@@ -53,7 +53,7 @@ ex.write_xml('book.xml')
 ### Clone Repo
 * git clone git@github.com:penumbra/jaxb.git 
 
-### Update JAXB path in ant build and JRuby startup script
+### Update JAXB Paths
 * update line 9 of ./build.xml to reference your JAXB installation path
 * update line 7 of bin/example.rb to reference your JAXB installation path
 
