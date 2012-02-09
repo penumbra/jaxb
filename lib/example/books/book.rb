@@ -19,7 +19,7 @@ module Books
     end
 
     # convert key (e.g :name, :isbn, etc) to key= (e.g. :name=, :isbn=, etc)
-    # invoke the book's setter using the value
+    # to invoke 'method_missing' using the modified key and value
     def update( book_data )
       book_data.each do |key, value|
         method = key.to_s + "="
@@ -29,9 +29,13 @@ module Books
  
     def method_missing(meth, *args, &block)
       if meth == :authors=
-        update_authors(args[0])
+        @authors.update(args[0])
+        # link the BookType.Authors object to this Ruby objects' BookType object
+        @book_type.set_authors(@authors.authors_type)
       elsif meth == :promotion=
-        update_promotion( args[0] )
+        @promotion.update( args[0] )
+        # link the BookType.Promotion object to this Ruby objects' BookType object
+        @book_type.set_promotion(@promotion.promotion_type)
       else
         # pass the call to book_type
         @book_type.send(meth, args[0])
@@ -41,30 +45,6 @@ module Books
       # method, otherwise you'll mess up Ruby's method lookup.
       puts "Exception calling #{meth} => #{ex}"
       super
-    end
-
-  private
-    # author names are stored in @authors
-    def update_authors(authors)
-      authors.each do |author|
-        @authors.add(author)
-      end
-
-      # link the BookType.Authors object to this Ruby objects' BookType object
-      @book_type.set_authors(@authors.authors_type)
-    end
-
-    def update_promotion(data)
-      set_promotion
-
-      data.each do |key, value|
-        meth = key.to_s + '='
-
-        @promotion.send(meth.to_sym, value)
-      end
-
-      # link the BookType.Promotion object to this Ruby objects' BookType object
-      @book_type.set_promotion(@promotion.promotion_type)
     end
   end
 end

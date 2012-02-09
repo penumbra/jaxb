@@ -7,6 +7,13 @@ module Books
 
       @promotion_type = of.create_book_type_promotion
     end
+
+    def update( promotion_data )
+      promotion_data.each do |key, value|
+        method = key.to_s + '='
+        send(method.to_sym, value)
+      end
+    end
    
     def method_missing(meth, *args, &block)
       # pass the call to book_type
