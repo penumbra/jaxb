@@ -13,8 +13,9 @@ module Books
       of = Java::example::books::ObjectFactory.new
       @book_type = of.create_book_type
 
-      set_promotion
-      set_authors_type
+      # attr_readers are created but not yet linked to @book_type
+      @promotion = Promotion.new
+      @authors = Authors.new
     end
   
     # author names are stored in @authors
@@ -22,14 +23,22 @@ module Books
       authors.each do |author| 
         @authors.add(author)
       end
+
+      # link the BookType.Authors object to this Ruby objects' BookType object
+      @book_type.set_authors(@authors.authors_type)
     end
 
     def update_promotion(data)
+      set_promotion
+
       data.each do |key, value|
         meth = key.to_s + '='
 
         @promotion.send(meth.to_sym, value)
       end
+      
+      # link the BookType.Promotion object to this Ruby objects' BookType object
+      @book_type.set_promotion(@promotion.promotion_type)
     end
 
     def method_missing(meth, *args, &block)
@@ -46,20 +55,6 @@ module Books
       # method, otherwise you'll mess up Ruby's method lookup.
       puts "Exception calling #{meth} => #{ex}"
       super
-    end
-
-  private
-    def set_promotion
-      @promotion = Promotion.new
-     
-      @book_type.set_promotion(@promotion.promotion_type)
-    end
-
-    def set_authors_type
-      @authors = Authors.new
-
-      # link the BookType.Authors object to this Ruby objects' BookType object
-      @book_type.set_authors(@authors.authors_type)
     end
   end
 end
