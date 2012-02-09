@@ -44,7 +44,7 @@ module Books
       end
     end
 
-    describe "#save" do
+    describe "#to_xml" do
       it "should use jaxb to marshall objects to an xml file" do
         # add book_array to books collection
         book_array.each {|book| books.add(book)}
