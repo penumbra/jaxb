@@ -36,7 +36,7 @@ require 'ostruct'
 class ExampleData
   def ExampleData.metaprogramming_ruby
     promo = OpenStruct.new
-    promo.none = "None"
+    promo.discount = "45%"
 
     mr = OpenStruct.new
     mr.item_id = '308'
