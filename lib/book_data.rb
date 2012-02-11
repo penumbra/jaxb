@@ -64,7 +64,8 @@ class BookData
     end
 
     def book4
-      promo = {:None => "Free"}
+      promo = OpenStruct.new
+      promo.none = "Free article"
 
       jb = OpenStruct.new
       jb.item_id = '310'
