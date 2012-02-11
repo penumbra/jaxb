@@ -26,7 +26,7 @@ module Books
     end
 
     def authors= ( authors )
-      @authors.update authors
+      @authors.update( authors )
     end
 
     def promotion= ( promotion )
