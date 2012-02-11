@@ -5,4 +5,4 @@ $LOAD_PATH << lib_dir << jar_dir
 $LOAD_PATH << '/tools/jaxb-ri-20110601/lib'
 
 require 'example/books.rb'
-require 'jaxb/jaxb.rb'
+require 'jaxb/marshal.rb'
