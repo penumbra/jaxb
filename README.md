@@ -31,20 +31,32 @@ An ant build.xml supports the Java code generation and compilation.
 Using Ruby metaprogramming techniques, it becomes possible to interact with the JAXB classes (see list above) using native Ruby objects, while maintaining the ability to readily marshal the JAXB objects into XML.
 
 ```ruby
-metaprogramming_ruby = {
-  :item_id => '308',
-  :name => 'Metaprogramming Ruby',
-  :isbn => 1934356476,
-  :price => '$39.95',
-  :authors => ['Paulo Perrotta'],
-  :description => 'Ruby inherits characteristics from various languages — Lisp, Smalltalk ' +
-    ', C, and Perl, to name a few.  Metaprogramming comes from Lisp ' +
-    '(and Smalltalk).  It’s a bit like magic, which makes something ' +
-    'astonishing possible.'}
+require 'ostruct'
+
+class ExampleData
+  def ExampleData.metaprogramming_ruby
+    promo = OpenStruct.new
+    promo.none = "None"
+
+    mr = OpenStruct.new
+    mr.item_id = '308'
+    mr.name = 'Metaprogramming Ruby'
+    mr.isbn = 1934356476
+    mr.price = '$39.95'
+    mr.authors = ['Paulo Perrotta']
+    mr.description = 'Ruby inherits characteristics from various ' +
+    'languages — Lisp, Smalltalk, C, and Perl, to name a few.  ' +
+    'Metaprogramming comes from Lisp (and Smalltalk).  It’s a bit ' +
+    'like magic, which makes something astonishing possible.'
+    mr.promotion = promo.marshal_dump
+
+    mr.marshal_dump
+  end
+end
 
 ex = Example.new
-ex.add( metaprogramming_ruby )
-ex.write_xml('book.xml')
+ex.add( ExampleData.metaprogramming_ruby )
+ex.write_xml( 'books.xml' )
 ```
 ## Building the Example
 ### Pre-requisites 
