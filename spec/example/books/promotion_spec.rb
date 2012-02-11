@@ -17,8 +17,13 @@ module Books
 
     describe "#method_missing" do
       it "should set a discount value" do
-        promotion.discount= "25%"      
+        promotion.discount= "25%"
         promotion.data_type.discount.should == "25%"
+      end
+
+      it "should set a none value" do
+        promotion.none= "Nothing"
+        promotion.data_type.none.should == "Nothing"
       end
     end
   end
