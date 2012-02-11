@@ -28,7 +28,9 @@ module Books
         # the collection should contain the book created here
         book_array[0].data_type.should == book_type
       end
+    end
 
+    describe "#update" do
       it "should add multiple books" do
         books.update( book_array )
 
