@@ -55,6 +55,15 @@ module Books
         # verify discount
         book.promotion.data_type.discount.should == "25%"
       end
+
+      it "should support none" do
+        book.item_id = item_id
+        book.name = title
+        book.promotion = {:none => "None Available"}
+
+        # verify none
+        book.promotion.data_type.none.should == "None Available"
+      end
     end
 
     describe "#method_missing" do
