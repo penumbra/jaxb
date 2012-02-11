@@ -44,7 +44,7 @@ module Books
     describe "#to_xml" do
       it "should use jaxb to marshall objects to an xml file" do
         # add book_array to books collection
-        book_array.each {|book| books.add(book)}
+        books.update( book )
 
         # marshall the books into Xml
         xml = books.to_xml
