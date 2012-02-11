@@ -64,9 +64,13 @@ class BookData
     end
 
     def book4
+      promo = {:None => "Free"}
+
       jb = OpenStruct.new
       jb.item_id = '310'
       jb.name = 'JAXB Tutorial'
+      jb.authors = [ 'Ed Ort', 'Bhakti Mehta' ]
+      jb.promotion = promo.marshal_dump
 
       jb.marshal_dump
     end
