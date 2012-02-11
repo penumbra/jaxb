@@ -26,7 +26,7 @@ module Books
       authors = ['Sam Ruby', 'Dave Thomas', 'David Heinemeier Hansson'] 
     end
 
-    describe "#method_missing" do
+    describe "#authors=" do
       it "should support one author" do
          book.item_id = item_id
          book.name = title
@@ -44,7 +44,9 @@ module Books
            authors.include?(author).should == true
          end
       end
+    end
 
+    describe "#promotions=" do
       it "should allow discounts" do
         book.item_id = item_id
         book.name = title
@@ -53,7 +55,9 @@ module Books
         # verify discount
         book.promotion.data_type.discount.should == "25%"
       end
+    end
 
+    describe "#method_missing" do
       it "sets the item_id property" do
         book.item_id = item_id
         book.data_type.item_id.should == '307'
