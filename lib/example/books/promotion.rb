@@ -1,28 +1,14 @@
+# Marshal module properties class supports setting properties on @data_type
+require 'jaxb/properties.rb'
+
+# ObjectFactory allows you to programatically construct
+# new instances of the Java representation for XML content.
+java_import 'example.books.ObjectFactory'
+
 module Books
-  class Promotion
-    attr_reader :promotion_type
-
+  class Promotion < Jaxb::Properties
     def initialize
-      of = Java::example::books::ObjectFactory.new
-
-      @promotion_type = of.create_book_type_promotion
-    end
-
-    def update( promotion_data )
-      promotion_data.each do |key, value|
-        method = key.to_s + '='
-        send(method.to_sym, value)
-      end
-    end
-   
-    def method_missing(meth, *args, &block)
-      # pass the call to book_type
-      @promotion_type.send(meth, args[0])
-    rescue Exception => ex
-      # You *must* call super if you don't handle the
-      # method, otherwise you'll mess up Ruby's method lookup.
-      puts "Exception calling #{meth} => #{ex}"
-      super        
+      @data_type = ObjectFactory.new.create_book_type_promotion
     end
   end
 end

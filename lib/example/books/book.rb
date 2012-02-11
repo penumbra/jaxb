@@ -1,50 +1,39 @@
+# Jaxb module Properties class supports setting properties on @data_type
+require 'jaxb/properties.rb'
+
+# ObjectFactory allows you to programatically construct
+# new instances of the Java representation for XML content.
+java_import 'example.books.ObjectFactory'
+
 module Books
-  class Book
-    # book_type is the example.books.BookType object
-    attr_reader :book_type  
+  class Book < Jaxb::Properties
+    attr_reader :authors       # BookType.Authors
+    attr_reader :promotion    # BookType.Promotion
 
-    # authors.authors_type is a BookType.Authors object
-    attr_reader :authors    
+    def initialize( book = nil )
+      @data_type = ObjectFactory.new.create_book_type
 
-    # promotion.promotion_type is a BookType.Promotion object
-    attr_reader :promotion  
-
-    def initialize
-      of = Java::example::books::ObjectFactory.new
-      @book_type = of.create_book_type
-
-      # attr_readers are created but not yet linked to @book_type
+      # initially, these are not linked to self.data_type
       @promotion = Promotion.new
       @authors = Authors.new
+
+      # set the various properties for this instance using book
+      self.update( book ) unless book == nil
     end
 
-    # convert key (e.g :name, :isbn, etc) to key= (e.g. :name=, :isbn=, etc)
-    # to invoke 'method_missing' using the modified key and value
-    def update( book_data )
-      book_data.each do |key, value|
-        method = key.to_s + "="
-        send( method.to_sym, value)
-      end
-    end 
- 
     def method_missing(method, *args, &block)
       if method == :authors=
         @authors.update( args[0] )
-        # link the BookType.Authors object to this Ruby objects' BookType object
-        @book_type.set_authors(@authors.authors_type)
+        # link the BookType.Authors object to self.data_type
+        @data_type.set_authors(@authors.data_type)
       elsif method == :promotion=
         @promotion.update( args[0] )
-        # link the BookType.Promotion object to this Ruby objects' BookType object
-        @book_type.set_promotion(@promotion.promotion_type)
+        # link the BookType.Promotion object to self.data_type
+        @data_type.set_promotion(@promotion.data_type)
       else
-        # pass the call to book_type
-        @book_type.send(method, args[0])
+        # use Jaxb::Properties method_missing
+        super
       end
-    rescue Exception => ex
-      # You *must* call super if you don't handle the
-      # method, otherwise you'll mess up Ruby's method lookup.
-      puts "Exception calling #{method} => #{ex}"
-      super
     end
   end
 end

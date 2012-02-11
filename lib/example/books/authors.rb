@@ -1,22 +1,15 @@
+# Marshal module Collections class supports operations on @list
+require 'jaxb/collection.rb'
+
+# ObjectFactory allows you to programatically construct
+# new instances of the Java representation for XML content.
+java_import 'example.books.ObjectFactory'
+
 module Books
-  class Authors
-    attr_reader :authors_type
-    attr_reader :authors_list
-
+  class Authors < Jaxb::Collection
     def initialize
-      of = Java::example::books::ObjectFactory.new
-      @authors_type = of.create_book_type_authors
-
-      # getAuthorName returns List<String> - Java::JavaUtil::ArrayList
-      @authors_list = @authors_type.get_author_name
-    end
-
-    def update( author_data )
-      author_data.each {|author| add( author ) }
-    end
-
-    def add( author_name )
-      @authors_list.add( author_name )
+      @data_type = ObjectFactory.new.create_book_type_authors
+      @list = @data_type.get_author_name
     end
   end
 end
