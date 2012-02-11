@@ -11,14 +11,14 @@ module Books
         promo_data = {:discount => '25%'}
         promotion.update( promo_data )
 
-        promotion.promotion_type.discount.should == "25%"
+        promotion.data_type.discount.should == "25%"
       end
     end
 
     describe "#method_missing" do
       it "should set a discount value" do
         promotion.discount= "25%"      
-        promotion.promotion_type.discount.should == "25%"
+        promotion.data_type.discount.should == "25%"
       end
     end
   end

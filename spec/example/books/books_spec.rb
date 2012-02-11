@@ -26,11 +26,11 @@ module Books
         # add one book to books collection
         books.add(book_array[0])
 
-        # books.book_list attribute => Java::JavaUtil::ArrayList
-        book_type = books.book_list.get(0)
+        # books.list attribute => Java::JavaUtil::ArrayList
+        book_type = books.list.get(0)
 
         # the collection should contain the book created here
-        book_array[0].book_type.should == book_type
+        book_array[0].data_type.should == book_type
       end
 
       it "should add multiple books" do
@@ -38,7 +38,7 @@ module Books
         book_array.each {|book| books.add(book)}
 
         # verify collection contains book_array
-        books.book_list.each do |book_type|
+        books.list.each do |book_type|
           book_array.include?(book_type) == true
         end
       end

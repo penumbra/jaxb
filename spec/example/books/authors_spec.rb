@@ -14,7 +14,7 @@ module Books
       it "should add one author" do
         authors.add(author_names[0])
 
-        name = authors.authors_type.get_author_name.get(0)
+        name = authors.list.get(0)
         name.should == author_names[0]
       end
 
@@ -23,7 +23,7 @@ module Books
           authors.add(name)
         end
 
-        authors.authors_type.get_author_name.each do |name|
+        authors.list.each do |name|
           author_names.include?(name).should == true
         end
       end
@@ -32,7 +32,7 @@ module Books
     describe "#update" do
       it "should support adding authors from an array" do
         authors.update( author_names )
-        authors.authors_list.length.should == author_names.size
+        authors.list.length.should == author_names.size
       end
     end
   end

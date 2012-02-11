@@ -32,7 +32,7 @@ module Books
          book.name = title
          book.authors = authors[0]
          # verify
-         book.authors.authors_list.get(0).should == authors[0]
+         book.authors.list.get(0).should == authors[0]
       end
 
       it "should support multiple authors" do
@@ -40,7 +40,7 @@ module Books
          book.name = title
          book.authors = authors
          # verify
-         book.authors.authors_type.author_name.each do |author|
+         book.authors.data_type.author_name.each do |author|
            authors.include?(author).should == true
          end
       end
@@ -51,27 +51,27 @@ module Books
         book.promotion = {:discount => "25%"}
 
         # verify discount
-        book.promotion.promotion_type.discount.should == "25%"
+        book.promotion.data_type.discount.should == "25%"
       end
 
       it "sets the item_id property" do
         book.item_id = item_id
-        book.book_type.item_id.should == '307'
+        book.data_type.item_id.should == '307'
       end
 
       it "sets the name property" do
         book.name = title
-        book.book_type.name.should == title
+        book.data_type.name.should == title
       end
 
       it "sets the isbn property" do
         book.isbn = isbn
-        book.book_type.isbn.should == isbn
+        book.data_type.isbn.should == isbn
       end
 
       it "sets the price property" do
         book.price = price
-        book.book_type.price.should == price
+        book.data_type.price.should == price
       end
     end
   end
