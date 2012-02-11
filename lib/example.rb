@@ -2,29 +2,24 @@ require 'example/books.rb'
 require 'example_data.rb'
 
 class Example
-  attr_reader :books   # represents a collection of books
+  # a collection of books
+  attr_reader :books
 
   def initialize
     @books = Books::Books.new
   end
 
-  def add(book_data)
-    book = Books::Book.new
-
-    book.update( book_data )
-
-    @books.add(book)  # add book to books collection
+  # add a book to books collection
+  def add( book )
+    @books.add( Books::Book.new( book ))
   end
 
-  def write_xml( file_name )
-    # marshall the books into Xml
-    xml = @books.to_xml 
-
-    # write to file
-    File.open(file_name, 'w+') {|f| f.write(xml)}
+  def save_xml( file_name )
+    File.open(file_name, 'w+') {|f| f.write( @books.to_xml )}
   end
 end
 
+# create an xml document containing four (4) book records
 ex = Example.new
 
 ex.add( ExampleData::book1 )
@@ -32,4 +27,4 @@ ex.add( ExampleData::book2 )
 ex.add( ExampleData::book3 )
 ex.add( ExampleData::book4 )
 
-ex.write_xml 'books.xml'
+ex.save_xml 'books.xml'
