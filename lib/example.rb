@@ -1,5 +1,5 @@
 require 'example/books.rb'
-require 'example_data.rb'
+require 'book_data.rb'
 
 class Example
   # a collection of books
@@ -19,12 +19,13 @@ class Example
   end
 end
 
-# create an xml document containing four (4) book records
-ex = Example.new
+my_example = Example.new
 
-ex.add( ExampleData::book1 )
-ex.add( ExampleData::book2 )
-ex.add( ExampleData::book3 )
-ex.add( ExampleData::book4 )
+# create Java representations of several book records
+BookData.each {|book| my_example.add( BookData.send( book )) }
 
-ex.save_xml 'books.xml'
+puts "marshalling BookData to books.xml file"; t1 = Time.now
+
+my_example.save_xml 'books.xml'; dt = Time.now - t1
+
+puts "completed in #{dt} seconds"
