@@ -30,8 +30,7 @@ module Books
       end
 
       it "should add multiple books" do
-        # add book_array to books collection
-        book_array.each {|book| books.add(book)}
+        books.add( book_array )
 
         # verify collection contains book_array
         books.list.each do |book_type|
