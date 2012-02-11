@@ -25,10 +25,12 @@ module Books
       self.update( book ) unless book == nil
     end
 
+    # assign one or more authors to be added at once
     def authors= ( authors )
       @authors.update( authors )
     end
 
+    # assign one or more promotion properties using hash items
     def promotion= ( promotion )
       @promotion.update( promotion )
     end
