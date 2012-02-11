@@ -2,10 +2,6 @@ require 'spec_helper'
 
 module Jaxb
   describe Properties do
-    let (:rails_authors) do
-      rails_authors = ['Sam Ruby', 'Dave Thomas', 'David Heinemeier Hansson']
-    end
-
     let (:book) do
       book = Books::Book.new
     end
