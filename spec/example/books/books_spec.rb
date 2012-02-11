@@ -17,10 +17,6 @@ module Books
       book_array
     end
 
-    let (:book_ids) do
-      book_ids = ['123', '456']
-    end
-
     describe "#add" do
       it "should add one book" do
         # add one book to books collection
