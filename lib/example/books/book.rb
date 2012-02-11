@@ -25,15 +25,12 @@ module Books
       self.update( book ) unless book == nil
     end
 
-    def method_missing(method, *args, &block)
-      if method == :authors=
-        @authors.update( args[0] )
-      elsif method == :promotion=
-        @promotion.update( args[0] )
-      else
-        # use Jaxb::Properties method_missing
-        super
-      end
+    def authors= ( authors )
+      @authors.update authors
+    end
+
+    def promotion= ( promotion )
+      @promotion.update( promotion )
     end
   end
 end
