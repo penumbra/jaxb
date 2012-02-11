@@ -7,8 +7,8 @@ java_import 'example.books.ObjectFactory'
 
 module Books
   class Book < Jaxb::Properties
-    attr_reader :authors       # BookType.Authors
-    attr_reader :promotion    # BookType.Promotion
+    attr_reader :authors    # BookType.Authors
+    attr_reader :promotion  # BookType.Promotion
 
     def initialize( book = nil )
       @data_type = ObjectFactory.new.create_book_type
