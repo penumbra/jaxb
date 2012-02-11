@@ -4,7 +4,7 @@ class BookData
   class << self
     def each
       methods = self.methods - Object.methods - ["each"]
-      methods.each {|method| yield( method ) }
+      methods.sort.each {|method| yield( method ) }
     end
 
     def book1
