@@ -31,32 +31,37 @@ An ant build.xml supports the Java code generation and compilation.
 Using Ruby metaprogramming techniques, it becomes possible to interact with the JAXB classes (see list above) using native Ruby objects, while maintaining the ability to readily marshal the JAXB objects into XML.
 
 ```ruby
-require 'ostruct'
+require 'example/books.rb'
+require 'book_data.rb'
 
-class ExampleData
-  def ExampleData.metaprogramming_ruby
-    promo = OpenStruct.new
-    promo.discount = "45%"
+class Example
+  # a collection of books
+  attr_reader :books
 
-    mr = OpenStruct.new
-    mr.item_id = '308'
-    mr.name = 'Metaprogramming Ruby'
-    mr.isbn = 1934356476
-    mr.price = '$39.95'
-    mr.authors = ['Paulo Perrotta']
-    mr.description = 'Ruby inherits characteristics from various ' +
-    'languages — Lisp, Smalltalk, C, and Perl, to name a few.  ' +
-    'Metaprogramming comes from Lisp (and Smalltalk).  It’s a bit ' +
-    'like magic, which makes something astonishing possible.'
-    mr.promotion = promo.marshal_dump
+  def initialize
+    @books = Books::Books.new
+  end
 
-    mr.marshal_dump
+  # add a book to books collection
+  def add( book )
+    @books.add( Books::Book.new( book ))
+  end
+
+  def save_xml( file_name )
+    File.open(file_name, 'w+') {|f| f.write( @books.to_xml )}
   end
 end
 
-ex = Example.new
-ex.add( ExampleData.metaprogramming_ruby )
-ex.write_xml( 'books.xml' )
+my_example = Example.new
+
+# create Java representations of several book records
+BookData.each {|book| my_example.add( BookData.send( book )) }
+
+puts "marshalling BookData to books.xml file"; t1 = Time.now
+
+my_example.save_xml 'books.xml'; dt = Time.now - t1
+
+puts "completed in #{dt} seconds"
 ```
 ## Building the Example
 ### Pre-requisites 
