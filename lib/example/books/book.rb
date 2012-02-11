@@ -13,9 +13,13 @@ module Books
     def initialize( book = nil )
       @data_type = ObjectFactory.new.create_book_type
 
-      # initially, these are not linked to self.data_type
-      @promotion = Promotion.new
+      # link the BookType.Authors object to self.data_type
       @authors = Authors.new
+      @data_type.set_authors(@authors.data_type)
+
+      # link the BookType.Promotion object to self.data_type
+      @promotion = Promotion.new
+      @data_type.set_promotion(@promotion.data_type)
 
       # set the various properties for this instance using book
       self.update( book ) unless book == nil
@@ -24,12 +28,8 @@ module Books
     def method_missing(method, *args, &block)
       if method == :authors=
         @authors.update( args[0] )
-        # link the BookType.Authors object to self.data_type
-        @data_type.set_authors(@authors.data_type)
       elsif method == :promotion=
         @promotion.update( args[0] )
-        # link the BookType.Promotion object to self.data_type
-        @data_type.set_promotion(@promotion.data_type)
       else
         # use Jaxb::Properties method_missing
         super
