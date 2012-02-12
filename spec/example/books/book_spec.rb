@@ -66,6 +66,18 @@ module Books
       end
     end
 
+    describe "#publication_date=" do
+      it "should assign a date for publication" do
+        book.item_id = item_id
+        book.name = title
+        book.publication_date = "2012-02-12"
+
+        # verify - ignore time portion
+        date = book.publication_date.to_s[0..9]
+        date.should == "2012-02-12"
+      end
+    end
+
     describe "#method_missing" do
       it "sets the item_id property" do
         book.item_id = item_id
