@@ -44,6 +44,7 @@ class BookData
       'Metaprogramming comes from Lisp (and Smalltalk).  It’s a bit ' +
       'like magic, which makes something astonishing possible.'
       mr.promotion = promo.marshal_dump
+      mr.publication_date = '2012-02-12'
 
       mr.marshal_dump
     end
