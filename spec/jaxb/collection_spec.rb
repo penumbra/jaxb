@@ -18,7 +18,7 @@ module Jaxb
     end
 
     describe "#update" do
-      it "should do something" do
+      it "should insert an array of books" do
         books.update( book_array )
 
         books.list.size.should == book_array.size
@@ -26,7 +26,7 @@ module Jaxb
     end
 
     describe "#add" do
-      it "should work" do
+      it "should support adding multiple books" do
         book_array.each do |book|
           books.add( book )
         end

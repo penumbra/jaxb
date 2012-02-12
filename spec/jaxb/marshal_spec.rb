@@ -28,6 +28,8 @@ module Jaxb
 
       # add a collection of authors
       book.authors.update( rails_authors )
+      # specify a rebate
+      book.promotion.discount = "$10 Rebate"
 
       # add book to the books collection
       books.add( book )
@@ -38,6 +40,11 @@ module Jaxb
 
       # verify the xml value
       xml.include?('<ISBN>9780977616633</ISBN>').should == true
+      xml.include?('<authorName>Sam Ruby</authorName>').should == true
+      xml.include?('<authorName>Dave Thomas</authorName>').should == true
+      xml.include?('<authorName>David Heinemeier Hansson</authorName>').should == true
+
+      xml.include?('<Discount>$10 Rebate</Discount>').should == true
     end
   end
 end
